@@ -1,4 +1,4 @@
-name: Test and deploy Medulla production
+name: Deploy Pfitztronic website
 
 on:
   push:
