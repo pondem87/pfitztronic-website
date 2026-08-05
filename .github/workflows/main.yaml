@@ -1,0 +1,25 @@
+name: Test and deploy Medulla production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-and-build:
+    name: Deploy Pfitztronic website
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+      AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      AWS_DEFAULT_REGION: af-south-1
+
+    steps:
+      - name: Checkout code
+        uses: actions/Checkout@v3
+
+      - name: Copy files to S3
+        run: aws s3 cp . s3://pfitz.co.zw/ --recursive --region af-south-1
+
+      - name: Invalidate distribution
+        run: aws cloudfront create-invalidation --distribution-id E1SEZFYA78L4Y8 --paths "/*"
