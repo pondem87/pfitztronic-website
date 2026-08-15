@@ -18,8 +18,8 @@ jobs:
       - name: Checkout code
         uses: actions/Checkout@v3
 
-      - name: Copy files to S3
-        run: aws s3 cp . s3://pfitz.co.zw/ --recursive --region af-south-1
+      - name: Sync files to S3
+        run: aws s3 sync . s3://pfitz.co.zw/ --delete --region af-south-1
 
       - name: Invalidate distribution
         run: aws cloudfront create-invalidation --distribution-id E3FWCQUIOE0U9D --paths "/*"
