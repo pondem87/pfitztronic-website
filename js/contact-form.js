@@ -72,6 +72,7 @@
                 });
 
                 if (!response.ok) {
+                    console.error("Mail service returned HTTP " + response);
                     throw new Error("Mail service returned HTTP " + response.status);
                 }
 
