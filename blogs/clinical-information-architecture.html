@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Why chronic care records should preserve clinical goals, progress, interventions and next decisions across encounters.">
+    <title>Beyond the Diagnosis: Clinical Information Architecture for Chronic Care - Pfitztronic</title>
+    <link rel="canonical" href="https://pfitztronic.co.bw/blogs/clinical-information-architecture.html">
+    <link href="../pfitz-icon.png" rel="icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Saira:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Beyond the Diagnosis: Clinical Information Architecture for Chronic Care",
+      "description": "Why chronic care records should preserve clinical goals, progress, interventions and next decisions across encounters.",
+      "image": "https://pfitztronic.co.bw/img/blogs/clinical-information-architecture.jpg",
+      "datePublished": "2026-08-24",
+      "dateModified": "2026-08-24",
+      "author": {
+        "@type": "Person",
+        "name": "Dr Tendai Pfidze"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Pfitztronic Pty Ltd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://pfitztronic.co.bw/img/logo.png"
+        }
+      },
+      "mainEntityOfPage": "https://pfitztronic.co.bw/blogs/clinical-information-architecture.html"
+    }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MX8N9PZCH4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MX8N9PZCH4');
+    </script>
+</head>
+<body>
+    <div id="spinner" class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+    </div>
+
+    <div class="container-fluid bg-primary">
+        <div class="container">
+            <nav class="navbar navbar-dark navbar-expand-lg py-0" aria-label="Main navigation">
+                <a href="../index.html" class="navbar-brand">
+                    <span class="d-flex align-items-center">
+                        <img src="../img/logo.png" alt="Pfitztronic logo" class="img-fluid me-2" width="55" height="55">
+                        <span class="h1 text-white fw-bold m-0">Pfitz<span class="text-secondary">tronic</span></span>
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <a href="../index.html" class="nav-item nav-link">Home</a>
+                        <a href="../about.html" class="nav-item nav-link">About</a>
+                        <a href="../service.html" class="nav-item nav-link">Services</a>
+                        <a href="../blog.html" class="nav-item nav-link active text-secondary">Blog Posts</a>
+                        <a href="../contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <header class="container-fluid page-header py-5">
+        <div class="container text-center py-5">
+            <h1 class="display-3 text-white mb-4">Beyond the Diagnosis: Clinical Information Architecture for Chronic Care</h1>
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="../blog.html">Blog</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Architecting Clinical Information</li>
+                </ol>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container py-5 my-lg-5">
+        <div class="row g-5">
+            <article class="col-lg-8">
+                <img src="../img/blogs/clinical-information-architecture.jpg" class="img-fluid w-100 rounded mb-4" width="600" height="450" alt="Clinician reviewing a digital patient record">
+                <div class="d-flex align-items-center mb-5">
+                    <img src="../img/blogs/drpfidze-small.jpg" class="rounded-circle me-3" width="64" height="64" alt="Dr Tendai Pfidze">
+                    <div><h2 class="h5 mb-1">Dr Tendai Pfidze</h2><time class="text-secondary" datetime="2026-08-24"><i class="fa fa-calendar-alt me-2"></i>24 August 2026</time></div>
+                </div>
+
+                <p class="mb-4">A recent ward round made me think about something that is easily overlooked in clinical practice: <strong>as care progresses, knowing the diagnosis is not enough. We increasingly need to know what we are trying to achieve for that particular patient.</strong></p>
+                <p class="mb-4">Consider a patient admitted with an exacerbation of heart failure, perhaps precipitated by pneumonia. The diagnosis tells us what is wrong, but it does not completely tell us what we should do next. Two patients with the same diagnosis may have very different baseline function, comorbidities, severity of disease and realistic outcomes.</p>
+                <p class="mb-4">What gives management direction are the <strong>treatment goals</strong>.</p>
+                <p class="mb-4">For one patient, we may want to restore adequate oxygenation, relieve congestion and return functional capacity toward their previous baseline. Another patient with the same diagnosis may have advanced disease where those same outcomes are unrealistic. The diagnosis may be identical; the goals, interventions and expected outcomes are not.</p>
+                <p class="mb-4">These goals also change throughout an admission. Some are achieved. Some become unattainable and are revised or abandoned. New problems emerge and generate new goals. Priorities change.</p>
+                <p class="mb-3">This means that on every ward round, the clinically useful question is not simply:</p>
+                <p class="fs-5 fw-bold mb-3">What diagnoses does this patient have?</p>
+                <p class="mb-3">It is also:</p>
+                <p class="fs-5 fw-bold mb-4">What are we currently trying to achieve, how close are we to achieving it, and what needs to happen next?</p>
+
+                <h2 class="mt-5 mb-3">The problem becomes even clearer in chronic outpatient care</h2>
+                <p class="mb-4">In an inpatient ward, clinical information becomes fragmented across several days of progress notes. In outpatient care, the same problem can extend across <strong>months or years</strong>.</p>
+                <p class="mb-4">A patient with diabetes, hypertension, heart failure or another chronic illness may accumulate pages of consultation notes. Each encounter documents what happened that particular day, but the longitudinal management intent can gradually disappear into the record.</p>
+                <p class="mb-4">When the outpatient department is busy, this creates another risk: care can become increasingly <strong>encounter-driven rather than goal-directed</strong>.</p>
+                <p class="mb-4">The patient presents with a problem today, we address it, document it and move on. At the next visit another problem is addressed. Yet the larger questions may become progressively harder to answer:</p>
+                <p class="mb-4">What are we ultimately trying to achieve for this patient's hypertension? What target did we agree upon? Has it been achieved? What was the strategy if it was not achieved? What are we trying to prevent? Which goals are most important now? Has something changed that requires us to reconsider them?</p>
+                <p class="mb-4">The answers may exist somewhere in the record, but finding them may require reconstructing clinical reasoning from multiple consultations scattered across an outpatient card.</p>
+                <p class="lead fw-bold mb-4">This is not simply a documentation problem. It is an information architecture problem.</p>
+
+                <h2 class="mt-5 mb-3">Clinical records are often organised around encounters rather than clinical intent</h2>
+                <p class="mb-4">Traditional medical documentation is largely chronological:</p>
+                <div class="bg-light rounded p-4 mb-4"><p class="fs-5 fw-bold mb-0">Admission → progress note → progress note → consultation → discharge</p></div>
+                <p class="mb-4">or in outpatient care:</p>
+                <div class="bg-light rounded p-4 mb-4"><p class="fs-5 fw-bold mb-0">Visit → visit → visit → visit → visit</p></div>
+                <p class="mb-4">But chronic disease management is not fundamentally a sequence of visits.</p>
+                <p class="mb-4">It is a collection of <strong>persistent clinical problems, goals, interventions and outcomes that evolve over time</strong>.</p>
+                <p class="mb-4">A treatment goal should therefore not belong exclusively to the consultation during which it was written. The consultation is simply the event during which that goal was created, reviewed or modified.</p>
+                <p class="lead fw-bold mb-4">The goal itself should persist.</p>
+                <p class="mb-4">The information model could instead connect:</p>
+                <div class="bg-primary rounded p-4 p-lg-5 mb-4"><p class="text-white fs-5 fw-bold mb-0">Clinical problem → Treatment goal → Target/measure → Intervention → Current status → Next decision</p></div>
+                <p class="mb-4">For example, a patient with hypertension might have an active goal containing the individualized blood-pressure target, current performance against that target, present treatment strategy, barriers identified and the next planned decision if control remains inadequate.</p>
+                <p class="mb-4">At the next consultation, the clinician should not have to reconstruct this management logic from six previous notes. It should already be available.</p>
+                <p class="mb-4">The consultation then becomes an opportunity to <strong>update the patient's longitudinal management state</strong>, rather than recreate it.</p>
+
+                <h2 class="mt-5 mb-3">A different kind of clinical dashboard</h2>
+                <p class="mb-4">This suggests that digital clinical systems need to move beyond merely reproducing paper documentation electronically.</p>
+                <p class="mb-3">For chronic conditions, a clinician opening the patient's record should be able to see a persistent management view showing the patient's:</p>
+                <ul class="mb-4">
+                    <li class="mb-2">active problems;</li>
+                    <li class="mb-2">current treatment goals;</li>
+                    <li class="mb-2">measurable targets where appropriate;</li>
+                    <li class="mb-2">progress toward each goal;</li>
+                    <li class="mb-2">current interventions;</li>
+                    <li class="mb-2">unresolved barriers or risks;</li>
+                    <li class="mb-2">next planned decisions; and</li>
+                    <li>goals that have been achieved, revised or abandoned.</li>
+                </ul>
+                <p class="mb-4">Goals themselves could have a lifecycle:</p>
+                <div class="bg-light rounded p-4 mb-4"><p class="fs-5 fw-bold mb-0">Proposed → Active → Achieved / Revised / Abandoned</p></div>
+                <p class="mb-4">Their priority could change without losing their history.</p>
+                <p class="mb-4">The traditional progress note would still have an important role. It provides the narrative, observations and clinical reasoning associated with a particular encounter. But it should not be the only place where critical longitudinal information lives.</p>
+                <p class="mb-4">This distinction matters.</p>
+                <p class="lead fw-bold mb-4">The note records the encounter. The clinical information architecture should represent the patient's evolving state.</p>
+
+                <h2 class="mt-5 mb-3">Digitising paper is not enough</h2>
+                <p class="mb-4">This is also why simply replacing paper files with electronic notes does not necessarily constitute meaningful digital transformation.</p>
+                <p class="mb-4">If an electronic medical record gives clinicians twenty electronic pages to search instead of twenty physical pages to flip through, we have improved retrieval without necessarily solving the underlying problem.</p>
+                <p class="lead fw-bold mb-4">Searchable poor information architecture remains poor information architecture.</p>
+                <p class="mb-4">The greater opportunity of digitisation is to structure clinical information around how care actually works.</p>
+                <p class="mb-4">This becomes particularly important in chronic disease, where management is longitudinal, multidisciplinary and increasingly complex. Different clinicians may see the patient at different times. New conditions emerge. Goals compete with one another. Treatments interact. Patient preferences change. Some targets become inappropriate as disease progresses.</p>
+                <p class="mb-4">The clinical information system therefore needs to preserve not only <strong>what has happened</strong>, but also <strong>what we are trying to achieve now</strong>.</p>
+
+                <h2 class="mt-5 mb-3">Clinical information architecture as a patient-safety capability</h2>
+                <p class="mb-4">This changes the argument for healthcare digitisation.</p>
+                <p class="mb-4">The case for digital health is often framed around efficiency: faster retrieval of records, reduced paperwork, easier reporting and better access to data.</p>
+                <p class="mb-4">Those benefits matter. But chronic disease management exposes a deeper requirement.</p>
+                <p class="mb-4">Healthcare increasingly asks clinicians to maintain longitudinal awareness of multiple interacting problems, goals, interventions and outcomes across many encounters and often across multiple healthcare professionals.</p>
+                <p class="mb-4">There is a limit to how much of that complexity we can reasonably expect clinicians to reconstruct from chronological documentation, particularly in busy clinical environments.</p>
+                <p class="lead fw-bold mb-4">At that point, information architecture becomes part of clinical safety.</p>
+                <p class="mb-4">A well-designed digital health system should reduce the cognitive work required merely to understand where the patient currently stands. It should preserve clinical intent across encounters, make important goals visible, show progress toward them and support continuity when responsibility moves from one clinician to another.</p>
+                <p class="mb-3">The design principle may therefore be quite simple:</p>
+                <blockquote class="bg-light border-start border-primary border-5 rounded p-4 fs-5 fw-bold">Chronic care should be organised around persistent clinical problems and goals, not merely around a sequence of encounters.</blockquote>
+                <p class="mb-4">Perhaps the question is no longer simply whether healthcare should become digital.</p>
+                <p class="mb-4">The more important question is whether our clinical information systems are being designed around <strong>how clinicians actually manage patients over time</strong>.</p>
+            </article>
+
+            <aside class="col-lg-4">
+                <div class="bg-light rounded p-4 p-lg-5 mb-4">
+                    <h2 class="h3 mb-3">About the author</h2>
+                    <p>Dr Tendai Pfidze holds an MBChB and an MSc in Computer Science and is a Certified Business Architect. With extensive experience across clinical practice, software and IoT, he is passionate about sustainable digital transformation.</p>
+                </div>
+                <div class="bg-primary rounded p-4 p-lg-5">
+                    <h2 class="h3 text-white mb-3">Architect better clinical systems</h2>
+                    <p class="text-white">Pfitztronic helps healthcare organisations connect clinical goals, information, processes and technology through practical architecture.</p>
+                    <a href="../contact.html" class="btn btn-secondary text-white rounded-pill px-4 py-3">Contact Us</a>
+                </div>
+                <a href="../blog.html" class="d-block mt-4"><i class="fa fa-arrow-left me-2"></i>Back to all blog posts</a>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="container-fluid footer bg-dark wow fadeIn" data-wow-delay=".3s">
+        <div class="container pt-5 pb-4">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <a href="../index.html"><span class="d-flex align-items-center"><img src="../img/logo.png" alt="Pfitztronic logo" class="img-fluid me-2" width="60" height="60"><span class="h1 text-white fw-bold d-block m-0">Pfitz<span class="text-secondary">tronic</span></span></span></a>
+                    <p class="mt-4 text-light">Our customer is a hands-on business owner or entrepreneur who is execution-driven and committed to operational excellence.</p>
+                    <div class="d-flex hightech-link">
+                        <a href="https://www.facebook.com/profile.php?id=61572125436868" class="btn-light nav-fill btn btn-square rounded-circle me-2" aria-label="Pfitztronic on Facebook"><i class="fab fa-facebook-f text-primary"></i></a>
+                        <a href="https://x.com/TindoWaTakue" class="btn-light nav-fill btn btn-square rounded-circle me-2" aria-label="Pfitztronic on X"><i class="fab fa-twitter text-primary"></i></a>
+                        <a href="https://www.linkedin.com/company/pfitztronic" class="btn-light nav-fill btn btn-square rounded-circle" aria-label="Pfitztronic on LinkedIn"><i class="fab fa-linkedin-in text-primary"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6"><span class="h3 text-secondary">Quick Links</span><div class="mt-4 d-flex flex-column short-link"><a href="../about.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>About us</a><a href="../contact.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Contact us</a><a href="../service.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Our Services</a><a href="../blog.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Latest Blog</a></div></div>
+                <div class="col-lg-3 col-md-6"><span class="h3 text-secondary">Useful Links</span><div class="mt-4 d-flex flex-column help-link"><a href="../privacy.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Privacy Policy</a><a href="../faqs.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>FAQs</a><a href="../contact.html" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Contact</a></div></div>
+                <div class="col-lg-3 col-md-6"><span class="h3 text-secondary">Contact Us</span><div class="text-white mt-4 d-flex flex-column contact-link"><span class="pb-3 text-light border-bottom border-primary"><i class="fas fa-map-marker-alt text-secondary me-2"></i>Kanye, Botswana</span><a href="tel:+26774178111" class="py-3 text-light border-bottom border-primary"><i class="fas fa-phone-alt text-secondary me-2"></i>+267 74 178 111</a><a href="mailto:tendai@pfitztronic.co.bw" class="py-3 text-light border-bottom border-primary"><i class="fas fa-envelope text-secondary me-2"></i>tendai@pfitztronic.co.bw</a></div></div>
+            </div>
+            <hr class="text-light mt-5 mb-4">
+            <div class="row"><div class="col-md-6 text-center text-md-start"><span class="text-light"><i class="fas fa-copyright text-secondary me-2"></i><span class="text-secondary">Pfitztronic Pty Ltd</span>. All rights reserved.</span></div><div class="col-md-6 text-center text-md-end"><span class="text-light">Designed By <a href="https://htmlcodex.com" class="text-secondary">HTML Codex</a></span></div></div>
+        </div>
+    </footer>
+
+    <a href="#" class="btn btn-secondary btn-square rounded-circle back-to-top" aria-label="Back to top"><i class="fa fa-arrow-up text-white"></i></a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/wow/wow.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
