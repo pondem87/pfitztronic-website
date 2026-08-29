@@ -1,0 +1,21 @@
+---
+import { siteConfig } from "../config";
+import { pageHref } from "../paths";
+interface Props { route: string }
+const { route } = Astro.props;
+const logoPath = route.includes("/") ? "../img/logo.png" : "img/logo.png";
+const items = [
+  { target: "", label: "Home", active: route === "" },
+  { target: "about", label: "About", active: route === "about" },
+  { target: "service", label: "Services", active: route === "service" || route.startsWith("services/") },
+  { target: "blog", label: "Blog Posts", active: route === "blog" || route.startsWith("blogs/") },
+  { target: "contact", label: "Contact", active: route === "contact" },
+];
+---
+
+<div class="container-fluid bg-primary"><div class="container"><nav class="navbar navbar-dark navbar-expand-lg py-0" aria-label="Main navigation">
+  <a href={pageHref(route, "")} class="navbar-brand"><span class="d-flex align-items-center justify-content-center"><img src={logoPath} alt="Pfitztronic logo" class="img-fluid me-2" width="55" height="55" /><span class="h1 text-white fw-bold m-0">Pfitz<span class="text-secondary">tronic</span></span></span></a>
+  <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse bg-transparent" id="navbarCollapse"><div class="navbar-nav ms-auto mx-xl-auto p-0">{items.map((item) => <a href={pageHref(route, item.target)} class:list={["nav-item", "nav-link", { "active text-secondary": item.active }]} aria-current={item.active ? "page" : undefined}>{item.label}</a>)}</div></div>
+  <div class="d-none d-xl-flex flex-shrink-0"><div class="d-flex align-items-center justify-content-center me-4"><a href={`tel:${siteConfig.phoneHref}`} aria-label={`Call ${siteConfig.phoneDisplay}`}><i class="fa fa-phone-alt text-white fa-2x"></i></a></div><div class="d-flex flex-column"><span class="text-white-50">Have any questions?</span><span class="text-secondary">Call: {siteConfig.phoneDisplay}</span></div></div>
+</nav></div></div>

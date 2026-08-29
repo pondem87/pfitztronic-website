@@ -1,0 +1,5 @@
+---
+const facts = ["Establish a customer-centric strategy", "Conduct a strategy impact assessment", "Design target business and technology architectures", "Establish a transformation roadmap"];
+---
+
+<section class="container-fluid bg-secondary py-5" aria-label="Our approach"><div class="container"><div class="row">{facts.map((fact, index) => <div class="col-lg-3 wow fadeIn" data-wow-delay={`.${index * 2 + 1}s`}><div class="d-flex counter"><span class="h1 me-3 text-primary counter-value">{index + 1}</span><h5 class="text-white mt-1">{fact}</h5></div></div>)}</div></div></section>

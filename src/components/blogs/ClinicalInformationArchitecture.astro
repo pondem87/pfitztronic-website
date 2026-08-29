@@ -1,0 +1,82 @@
+---
+import BlogPost from "./BlogPost.astro";
+import { blogPosts } from "../../content/blog-posts";
+const post = blogPosts["clinical-information-architecture"];
+---
+
+<BlogPost {post}>
+<p class="mb-4">A recent ward round made me think about something that is easily overlooked in clinical practice: <strong>as care progresses, knowing the diagnosis is not enough. We increasingly need to know what we are trying to achieve for that particular patient.</strong></p>
+                <p class="mb-4">Consider a patient admitted with an exacerbation of heart failure, perhaps precipitated by pneumonia. The diagnosis tells us what is wrong, but it does not completely tell us what we should do next. Two patients with the same diagnosis may have very different baseline function, comorbidities, severity of disease and realistic outcomes.</p>
+                <p class="mb-4">What gives management direction are the <strong>treatment goals</strong>.</p>
+                <p class="mb-4">For one patient, we may want to restore adequate oxygenation, relieve congestion and return functional capacity toward their previous baseline. Another patient with the same diagnosis may have advanced disease where those same outcomes are unrealistic. The diagnosis may be identical; the goals, interventions and expected outcomes are not.</p>
+                <p class="mb-4">These goals also change throughout an admission. Some are achieved. Some become unattainable and are revised or abandoned. New problems emerge and generate new goals. Priorities change.</p>
+                <p class="mb-3">This means that on every ward round, the clinically useful question is not simply:</p>
+                <p class="fs-5 fw-bold mb-3">What diagnoses does this patient have?</p>
+                <p class="mb-3">It is also:</p>
+                <p class="fs-5 fw-bold mb-4">What are we currently trying to achieve, how close are we to achieving it, and what needs to happen next?</p>
+
+                <h2 class="mt-5 mb-3">The problem becomes even clearer in chronic outpatient care</h2>
+                <p class="mb-4">In an inpatient ward, clinical information becomes fragmented across several days of progress notes. In outpatient care, the same problem can extend across <strong>months or years</strong>.</p>
+                <p class="mb-4">A patient with diabetes, hypertension, heart failure or another chronic illness may accumulate pages of consultation notes. Each encounter documents what happened that particular day, but the longitudinal management intent can gradually disappear into the record.</p>
+                <p class="mb-4">When the outpatient department is busy, this creates another risk: care can become increasingly <strong>encounter-driven rather than goal-directed</strong>.</p>
+                <p class="mb-4">The patient presents with a problem today, we address it, document it and move on. At the next visit another problem is addressed. Yet the larger questions may become progressively harder to answer:</p>
+                <p class="mb-4">What are we ultimately trying to achieve for this patient's hypertension? What target did we agree upon? Has it been achieved? What was the strategy if it was not achieved? What are we trying to prevent? Which goals are most important now? Has something changed that requires us to reconsider them?</p>
+                <p class="mb-4">The answers may exist somewhere in the record, but finding them may require reconstructing clinical reasoning from multiple consultations scattered across an outpatient card.</p>
+                <p class="lead fw-bold mb-4">This is not simply a documentation problem. It is an information architecture problem.</p>
+
+                <h2 class="mt-5 mb-3">Clinical records are often organised around encounters rather than clinical intent</h2>
+                <p class="mb-4">Traditional medical documentation is largely chronological:</p>
+                <div class="bg-light rounded p-4 mb-4"><p class="fs-5 fw-bold mb-0">Admission → progress note → progress note → consultation → discharge</p></div>
+                <p class="mb-4">or in outpatient care:</p>
+                <div class="bg-light rounded p-4 mb-4"><p class="fs-5 fw-bold mb-0">Visit → visit → visit → visit → visit</p></div>
+                <p class="mb-4">But chronic disease management is not fundamentally a sequence of visits.</p>
+                <p class="mb-4">It is a collection of <strong>persistent clinical problems, goals, interventions and outcomes that evolve over time</strong>.</p>
+                <p class="mb-4">A treatment goal should therefore not belong exclusively to the consultation during which it was written. The consultation is simply the event during which that goal was created, reviewed or modified.</p>
+                <p class="lead fw-bold mb-4">The goal itself should persist.</p>
+                <p class="mb-4">The information model could instead connect:</p>
+                <div class="bg-primary rounded p-4 p-lg-5 mb-4"><p class="text-white fs-5 fw-bold mb-0">Clinical problem → Treatment goal → Target/measure → Intervention → Current status → Next decision</p></div>
+                <p class="mb-4">For example, a patient with hypertension might have an active goal containing the individualized blood-pressure target, current performance against that target, present treatment strategy, barriers identified and the next planned decision if control remains inadequate.</p>
+                <p class="mb-4">At the next consultation, the clinician should not have to reconstruct this management logic from six previous notes. It should already be available.</p>
+                <p class="mb-4">The consultation then becomes an opportunity to <strong>update the patient's longitudinal management state</strong>, rather than recreate it.</p>
+
+                <h2 class="mt-5 mb-3">A different kind of clinical dashboard</h2>
+                <p class="mb-4">This suggests that digital clinical systems need to move beyond merely reproducing paper documentation electronically.</p>
+                <p class="mb-3">For chronic conditions, a clinician opening the patient's record should be able to see a persistent management view showing the patient's:</p>
+                <ul class="mb-4">
+                    <li class="mb-2">active problems;</li>
+                    <li class="mb-2">current treatment goals;</li>
+                    <li class="mb-2">measurable targets where appropriate;</li>
+                    <li class="mb-2">progress toward each goal;</li>
+                    <li class="mb-2">current interventions;</li>
+                    <li class="mb-2">unresolved barriers or risks;</li>
+                    <li class="mb-2">next planned decisions; and</li>
+                    <li>goals that have been achieved, revised or abandoned.</li>
+                </ul>
+                <p class="mb-4">Goals themselves could have a lifecycle:</p>
+                <div class="bg-light rounded p-4 mb-4"><p class="fs-5 fw-bold mb-0">Proposed → Active → Achieved / Revised / Abandoned</p></div>
+                <p class="mb-4">Their priority could change without losing their history.</p>
+                <p class="mb-4">The traditional progress note would still have an important role. It provides the narrative, observations and clinical reasoning associated with a particular encounter. But it should not be the only place where critical longitudinal information lives.</p>
+                <p class="mb-4">This distinction matters.</p>
+                <p class="lead fw-bold mb-4">The note records the encounter. The clinical information architecture should represent the patient's evolving state.</p>
+
+                <h2 class="mt-5 mb-3">Digitising paper is not enough</h2>
+                <p class="mb-4">This is also why simply replacing paper files with electronic notes does not necessarily constitute meaningful digital transformation.</p>
+                <p class="mb-4">If an electronic medical record gives clinicians twenty electronic pages to search instead of twenty physical pages to flip through, we have improved retrieval without necessarily solving the underlying problem.</p>
+                <p class="lead fw-bold mb-4">Searchable poor information architecture remains poor information architecture.</p>
+                <p class="mb-4">The greater opportunity of digitisation is to structure clinical information around how care actually works.</p>
+                <p class="mb-4">This becomes particularly important in chronic disease, where management is longitudinal, multidisciplinary and increasingly complex. Different clinicians may see the patient at different times. New conditions emerge. Goals compete with one another. Treatments interact. Patient preferences change. Some targets become inappropriate as disease progresses.</p>
+                <p class="mb-4">The clinical information system therefore needs to preserve not only <strong>what has happened</strong>, but also <strong>what we are trying to achieve now</strong>.</p>
+
+                <h2 class="mt-5 mb-3">Clinical information architecture as a patient-safety capability</h2>
+                <p class="mb-4">This changes the argument for healthcare digitisation.</p>
+                <p class="mb-4">The case for digital health is often framed around efficiency: faster retrieval of records, reduced paperwork, easier reporting and better access to data.</p>
+                <p class="mb-4">Those benefits matter. But chronic disease management exposes a deeper requirement.</p>
+                <p class="mb-4">Healthcare increasingly asks clinicians to maintain longitudinal awareness of multiple interacting problems, goals, interventions and outcomes across many encounters and often across multiple healthcare professionals.</p>
+                <p class="mb-4">There is a limit to how much of that complexity we can reasonably expect clinicians to reconstruct from chronological documentation, particularly in busy clinical environments.</p>
+                <p class="lead fw-bold mb-4">At that point, information architecture becomes part of clinical safety.</p>
+                <p class="mb-4">A well-designed digital health system should reduce the cognitive work required merely to understand where the patient currently stands. It should preserve clinical intent across encounters, make important goals visible, show progress toward them and support continuity when responsibility moves from one clinician to another.</p>
+                <p class="mb-3">The design principle may therefore be quite simple:</p>
+                <blockquote class="bg-light border-start border-primary border-5 rounded p-4 fs-5 fw-bold">Chronic care should be organised around persistent clinical problems and goals, not merely around a sequence of encounters.</blockquote>
+                <p class="mb-4">Perhaps the question is no longer simply whether healthcare should become digital.</p>
+                <p class="mb-4">The more important question is whether our clinical information systems are being designed around <strong>how clinicians actually manage patients over time</strong>.</p>
+</BlogPost>

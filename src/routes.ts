@@ -1,6 +1,6 @@
 export interface SiteRoute {
   route: string;
-  sourceFile: string;
+  sourceFile?: string;
   indexable: boolean;
 }
 
@@ -15,11 +15,11 @@ export const siteRoutes: SiteRoute[] = [
   { route: "services/process-and-experience-design", sourceFile: "services/process-and-experience-design.html", indexable: true },
   { route: "services/solution-delivery-and-support", sourceFile: "services/solution-delivery-and-support.html", indexable: true },
   { route: "blog", sourceFile: "blog.html", indexable: true },
-  { route: "blogs/clinical-information-architecture", sourceFile: "blogs/clinical-information-architecture.html", indexable: true },
-  { route: "blogs/first-pdca-cycle", sourceFile: "blogs/first-pdca-cycle.html", indexable: true },
-  { route: "blogs/africa-fourth-industrial-revolution", sourceFile: "blogs/africa-fourth-industrial-revolution.html", indexable: true },
-  { route: "blogs/healthcare-digital-transformation", sourceFile: "blogs/healthcare-digital-transformation.html", indexable: true },
-  { route: "blogs/right-level-of-formality", sourceFile: "blogs/right-level-of-formality.html", indexable: true },
+  { route: "blogs/clinical-information-architecture", indexable: true },
+  { route: "blogs/first-pdca-cycle", indexable: true },
+  { route: "blogs/africa-fourth-industrial-revolution", indexable: true },
+  { route: "blogs/healthcare-digital-transformation", indexable: true },
+  { route: "blogs/right-level-of-formality", indexable: true },
   { route: "contact", sourceFile: "contact.html", indexable: true },
   { route: "faqs", sourceFile: "faqs.html", indexable: true },
   { route: "privacy", sourceFile: "privacy.html", indexable: true },

@@ -54,7 +54,7 @@ export const siteConfig: SiteConfig = {
   defaultOrigin: requiredUrl("SITE_DEFAULT_ORIGIN"),
   location: required("SITE_LOCATION"),
   phoneDisplay: required("SITE_PHONE_DISPLAY"),
-  phoneHref: required("SITE_PHONE_HREF"),
+  phoneHref: required("SITE_PHONE_HREF").replace(/^tel:/i, ""),
   email: required("SITE_EMAIL"),
   mapUrl: requiredUrl("SITE_MAP_URL"),
   googleAnalyticsId: required("GOOGLE_ANALYTICS_ID"),

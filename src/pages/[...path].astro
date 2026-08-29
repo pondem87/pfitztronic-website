@@ -1,7 +1,18 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { renderPage } from "../render-page";
+import { loadPageContent } from "../render-page";
 import { siteRoutes } from "../routes";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Header from "../components/Header.astro";
+import Fact from "../components/Fact.astro";
+import Contact from "../components/Contact.astro";
+import ClinicalInformationArchitecture from "../components/blogs/ClinicalInformationArchitecture.astro";
+import FirstPdcaCycle from "../components/blogs/FirstPdcaCycle.astro";
+import AfricaFourthIndustrialRevolution from "../components/blogs/AfricaFourthIndustrialRevolution.astro";
+import HealthcareDigitalTransformation from "../components/blogs/HealthcareDigitalTransformation.astro";
+import RightLevelOfFormality from "../components/blogs/RightLevelOfFormality.astro";
+import { blogPosts, blogStructuredData, type BlogSlug } from "../content/blog-posts";
+import { siteConfig } from "../config";
 
 export const getStaticPaths = (() =>
   siteRoutes.map(({ route, sourceFile }) => ({
@@ -11,11 +22,35 @@ export const getStaticPaths = (() =>
 
 interface Props {
   route: string;
-  sourceFile: string;
+  sourceFile?: string;
 }
 
 const { route, sourceFile } = Astro.props;
-const html = await renderPage(sourceFile, route);
+const blogComponents = {
+  "clinical-information-architecture": ClinicalInformationArchitecture,
+  "first-pdca-cycle": FirstPdcaCycle,
+  "africa-fourth-industrial-revolution": AfricaFourthIndustrialRevolution,
+  "healthcare-digital-transformation": HealthcareDigitalTransformation,
+  "right-level-of-formality": RightLevelOfFormality,
+};
+const blogSlug = route.startsWith("blogs/") ? route.slice("blogs/".length) as BlogSlug : undefined;
+const post = blogSlug ? blogPosts[blogSlug] : undefined;
+const BlogContent = blogSlug ? blogComponents[blogSlug] : undefined;
+if (!post && !sourceFile) throw new Error(`No page content is configured for ${route}`);
+const page = post ? {
+  title: post.title,
+  description: post.description,
+  heading: post.heading,
+  html: "",
+  structuredData: [blogStructuredData(post, siteConfig.origin)],
+} : await loadPageContent(sourceFile!, route);
+const showFacts = ["", "about", "service", "blog", "contact"].includes(route);
+const showContact = route === "" || route === "contact";
 ---
 
-<Fragment set:html={html} />
+<SiteLayout title={page.title} description={page.description} route={route} structuredData={page.structuredData}>
+  <Header heading={page.heading} route={route} />
+  {showFacts && <Fact />}
+  {BlogContent ? <BlogContent /> : <Fragment set:html={page.html} />}
+  {showContact && <Contact />}
+</SiteLayout>

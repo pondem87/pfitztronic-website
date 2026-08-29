@@ -1,0 +1,18 @@
+---
+import type { BlogPost } from "../../content/blog-posts";
+interface Props { post: BlogPost }
+const { post } = Astro.props;
+---
+
+<main class="container py-5 my-lg-5"><div class="row g-5">
+  <article class="col-lg-8 pe-lg-5">
+    <img src={`..${post.image}`} class="img-fluid w-100 rounded mb-4" width="600" height="450" alt={post.imageAlt} />
+    <div class="d-flex align-items-center mb-5"><img src="../img/blogs/drpfidze-small.jpg" class="rounded-circle me-3" width="64" height="64" alt="Dr Tendai Pfidze" /><div><h2 class="h5 mb-1">Dr Tendai Pfidze</h2><time class="text-secondary" datetime={post.published}><i class="fa fa-calendar-alt me-2"></i>{post.publishedDisplay}</time></div></div>
+    <slot />
+  </article>
+  <aside class="col-lg-4">
+    <div class="bg-light rounded p-4 p-lg-5 mb-4"><h2 class="h3 mb-3">About the author</h2><p>Dr Tendai Pfidze holds an MBChB and an MSc in Computer Science and is a Certified Business Architect. With extensive experience across clinical practice, software and IoT, he is passionate about sustainable digital transformation.</p></div>
+    <div class="bg-primary rounded p-4 p-lg-5"><h2 class="h3 text-white mb-3">{post.ctaHeading}</h2><p class="text-white">{post.ctaText}</p><a href="../contact.html" class="btn btn-secondary text-white rounded-pill px-4 py-3">Contact Us</a></div>
+    <a href="../blog.html" class="d-block mt-4"><i class="fa fa-arrow-left me-2"></i>Back to all blog posts</a>
+  </aside>
+</div></main>
