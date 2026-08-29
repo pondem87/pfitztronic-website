@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    var endpoint = "https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-03a7781d-6fae-41e8-844c-4b00ebc0e645/mail/webmailhandler";
+    var endpoint = document.documentElement.dataset.contactFormEndpoint;
 
     function escapeHtml(value) {
         return value.replace(/[&<>'"]/g, function (character) {

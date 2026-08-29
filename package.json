@@ -1,0 +1,21 @@
+{
+  "name": "pfitztronic-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/run-country.mjs bw dev",
+    "dev:bw": "node scripts/run-country.mjs bw dev",
+    "dev:zw": "node scripts/run-country.mjs zw dev",
+    "build": "node scripts/run-country.mjs bw build",
+    "build:bw": "node scripts/run-country.mjs bw build",
+    "build:zw": "node scripts/run-country.mjs zw build",
+    "build:all": "npm run build:bw && npm run build:zw",
+    "preview": "node scripts/run-country.mjs bw preview",
+    "preview:bw": "node scripts/run-country.mjs bw preview",
+    "preview:zw": "node scripts/run-country.mjs zw preview"
+  },
+  "dependencies": {
+    "astro": "^7.2.9"
+  }
+}

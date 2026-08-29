@@ -1,25 +1,70 @@
-name: Deploy Pfitztronic website
+name: Build and deploy Pfitztronic websites
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+concurrency:
+  group: production-websites
+  cancel-in-progress: false
+
+permissions:
+  contents: read
 
 jobs:
-  test-and-build:
-    name: Deploy Pfitztronic website
+  build-and-deploy:
+    name: Build and deploy Botswana and Zimbabwe sites
     runs-on: ubuntu-latest
     env:
-      AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-      AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-      AWS_DEFAULT_REGION: af-south-1
+      AWS_REGION: ${{ vars.AWS_REGION || 'af-south-1' }}
+      BW_S3_BUCKET: pfitztronic.co.bw
+      ZW_S3_BUCKET: pfitztronic.co.zw
+      BW_CLOUDFRONT_DISTRIBUTION_ID: E2IHQHKBAWD0GN
+      ZW_CLOUDFRONT_DISTRIBUTION_ID: E1NIKM2EN50E34
 
     steps:
-      - name: Checkout code
-        uses: actions/Checkout@v3
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-      - name: Sync files to S3
-        run: aws s3 sync . s3://pfitz.co.zw/ --delete --region af-south-1
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
 
-      - name: Invalidate distribution
-        run: aws cloudfront create-invalidation --distribution-id E3FWCQUIOE0U9D --paths "/*"
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate deployment configuration
+        run: |
+          test -n "$BW_S3_BUCKET"
+          test -n "$ZW_S3_BUCKET"
+          test -n "$BW_CLOUDFRONT_DISTRIBUTION_ID"
+          test -n "$ZW_CLOUDFRONT_DISTRIBUTION_ID"
+
+      - name: Build Botswana website
+        run: npm run build:bw
+
+      - name: Build Zimbabwe website
+        run: npm run build:zw
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Upload Botswana website to S3
+        run: aws s3 sync dist/bw/ "s3://$BW_S3_BUCKET/" --delete --region "$AWS_REGION"
+
+      - name: Upload Zimbabwe website to S3
+        run: aws s3 sync dist/zw/ "s3://$ZW_S3_BUCKET/" --delete --region "$AWS_REGION"
+
+      - name: Refresh Botswana CloudFront distribution
+        run: aws cloudfront create-invalidation --distribution-id "$BW_CLOUDFRONT_DISTRIBUTION_ID" --paths "/*"
+
+      - name: Refresh Zimbabwe CloudFront distribution
+        run: aws cloudfront create-invalidation --distribution-id "$ZW_CLOUDFRONT_DISTRIBUTION_ID" --paths "/*"

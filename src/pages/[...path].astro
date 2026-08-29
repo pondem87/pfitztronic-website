@@ -1,0 +1,21 @@
+---
+import type { GetStaticPaths } from "astro";
+import { renderPage } from "../render-page";
+import { siteRoutes } from "../routes";
+
+export const getStaticPaths = (() =>
+  siteRoutes.map(({ route, sourceFile }) => ({
+    params: { path: route || undefined },
+    props: { route, sourceFile },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  route: string;
+  sourceFile: string;
+}
+
+const { route, sourceFile } = Astro.props;
+const html = await renderPage(sourceFile, route);
+---
+
+<Fragment set:html={html} />
