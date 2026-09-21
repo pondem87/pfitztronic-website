@@ -1,0 +1,135 @@
+---
+import { Image } from "astro:assets";
+import heroOne from "../../../public/img/projects/iot-hub/iot-hub-hero-img-1.png";
+import heroTwo from "../../../public/img/projects/iot-hub/iot-hub-hero-img-2.png";
+import heroThree from "../../../public/img/projects/iot-hub/iot-hub-hero-img-3.png";
+
+const slides = [
+  { image: heroOne, alt: "Wiring and connected equipment inside an industrial control cabinet", label: "Connected equipment" },
+  { image: heroTwo, alt: "Industrial network connections and power supply in a control panel", label: "Industrial connectivity" },
+  { image: heroThree, alt: "Close-up of a digital interface with controls and signal graphs", label: "Data and control" },
+];
+---
+
+<iot-hero-carousel role="region" aria-roledescription="carousel" aria-label="IoT Hub in the field">
+  <div class="hero-images">
+    {slides.map((slide, index) => (
+      <div class="hero-slide" data-slide hidden={index !== 0} role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${slides.length}: ${slide.label}`}>
+        <Image src={slide.image} alt={slide.alt} widths={[640, 960, 1366]} sizes="100vw" format="webp" quality={85} loading="eager" fetchpriority={index === 0 ? "high" : "low"} />
+      </div>
+    ))}
+  </div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="container hero-container">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">IoT Hub <span>by Pfitztronic</span></p>
+      <h1>Your equipment.<br />Connected.</h1>
+      <p class="hero-description">Live telemetry, analytics and control for water systems and industrial equipment. From the field to your phone.</p>
+      <div class="hero-actions">
+        <a href="#iot-contact" class="hero-button">Discuss your project <span aria-hidden="true">→</span></a>
+        <a href="#iot-solution" class="hero-link">Explore the solution <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <div class="hero-controls" data-controls hidden>
+      <div class="slide-selectors" aria-label="Choose a slide">
+        {slides.map((slide, index) => (
+          <button type="button" data-slide-to={index} aria-label={`Show slide ${index + 1}: ${slide.label}`} aria-current={index === 0 ? "true" : undefined}>
+            <span aria-hidden="true">0{index + 1}</span>
+          </button>
+        ))}
+      </div>
+      <div class="slide-navigation">
+        <button type="button" class="playback-button" data-playback>Pause slideshow</button>
+        <button type="button" data-previous aria-label="Previous slide"><span aria-hidden="true">←</span></button>
+        <button type="button" data-next aria-label="Next slide"><span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+    <p class="visually-hidden" data-announcement aria-live="polite" aria-atomic="true"></p>
+  </div>
+</iot-hero-carousel>
+
+<script>
+  class IoTHeroCarousel extends HTMLElement {
+    connectedCallback() {
+      const slides = [...this.querySelectorAll<HTMLElement>("[data-slide]")];
+      const selectors = [...this.querySelectorAll<HTMLButtonElement>("[data-slide-to]")];
+      const playback = this.querySelector<HTMLButtonElement>("[data-playback]")!;
+      const announcement = this.querySelector<HTMLElement>("[data-announcement]")!;
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let current = 0;
+      let playing = !reducedMotion.matches;
+      const updatePlayback = () => { playback.textContent = playing ? "Pause slideshow" : "Play slideshow"; };
+      const show = (index: number, manual = false) => {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => { slide.hidden = i !== current; });
+        selectors.forEach((button, i) => {
+          if (i === current) button.setAttribute("aria-current", "true");
+          else button.removeAttribute("aria-current");
+        });
+        if (manual) {
+          playing = false;
+          updatePlayback();
+          announcement.textContent = slides[current].getAttribute("aria-label");
+        }
+      };
+      const controller = new AbortController();
+      const options = { signal: controller.signal };
+      selectors.forEach((button, index) => button.addEventListener("click", () => show(index, true), options));
+      this.querySelector("[data-previous]")!.addEventListener("click", () => show(current - 1, true), options);
+      this.querySelector("[data-next]")!.addEventListener("click", () => show(current + 1, true), options);
+      playback.addEventListener("click", () => { playing = !playing; updatePlayback(); }, options);
+      reducedMotion.addEventListener("change", () => {
+        if (reducedMotion.matches) { playing = false; updatePlayback(); }
+      }, options);
+      const timer = window.setInterval(() => {
+        if (playing && !document.hidden && !this.matches(":hover") && !this.contains(document.activeElement)) show(current + 1);
+      }, 7000);
+      this.cleanup = () => { window.clearInterval(timer); controller.abort(); };
+      updatePlayback();
+      this.querySelector<HTMLElement>("[data-controls]")!.hidden = false;
+    }
+
+    cleanup?: () => void;
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+
+  if (!customElements.get("iot-hero-carousel")) customElements.define("iot-hero-carousel", IoTHeroCarousel);
+</script>
+
+<style>
+  iot-hero-carousel { display: block; position: relative; isolation: isolate; background: #102e42; color: #fff; }
+  .hero-images, .hero-slide, .hero-shade { position: absolute; inset: 0; z-index: -1; }
+  .hero-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .hero-shade { background: linear-gradient(90deg, rgba(5, 22, 33, .92), rgba(5, 22, 33, .64) 48%, rgba(5, 22, 33, .16)), linear-gradient(0deg, rgba(5, 22, 33, .5), transparent 35%); }
+  .hero-container { min-height: 640px; display: flex; flex-direction: column; justify-content: space-between; padding-top: 94px; padding-bottom: 30px; }
+  .hero-copy { max-width: 660px; padding-bottom: 60px; }
+  .hero-eyebrow { font-size: 1.05rem; font-weight: 600; color: #7aefbf; margin: 0 0 28px; }
+  .hero-eyebrow span { font-size: .8rem; font-weight: 400; color: #d3e1e7; margin-left: 12px; }
+  h1 { color: #fff; font-size: clamp(2.8rem, 4.7vw, 4.5rem); letter-spacing: -.035em; line-height: 1.08; margin: 0 0 28px; }
+  .hero-description { max-width: 480px; color: #e0e9ee; font-size: 1.1rem; line-height: 1.8; margin: 0 0 36px; }
+  .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px 32px; }
+  .hero-button { display: inline-flex; align-items: center; gap: 22px; padding: 15px 24px; border-radius: 4px; color: #102e42; background: #70edb7; font-size: .9rem; font-weight: 600; }
+  .hero-button:hover { background: #b9f9dc; }
+  .hero-link { color: #fff; font-size: .9rem; font-weight: 500; }
+  .hero-link:hover { color: #7aefbf; }
+  .hero-link span { margin-left: 8px; }
+  .hero-controls { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid #ffffff40; padding-top: 20px; }
+  .hero-controls[hidden] { display: none; }
+  .slide-selectors, .slide-navigation { display: flex; align-items: center; gap: 12px; }
+  button { color: #fff; border: 1px solid #ffffff60; background: #102e4240; border-radius: 4px; min-width: 44px; min-height: 44px; }
+  button:hover { background: #ffffff20; }
+  .slide-selectors button { border: 0; border-radius: 0; border-bottom: 2px solid transparent; font-size: .8rem; background: transparent; color: #d3e1e7; }
+  .slide-selectors button[aria-current="true"] { border-color: #7aefbf; color: #7aefbf; }
+  .playback-button { border: 0; padding: 0 12px; font-size: .75rem; background: transparent; }
+  a:focus-visible, button:focus-visible { outline: 3px solid #7aefbf; outline-offset: 5px; }
+  @media (min-width: 1600px) { .hero-container { min-height: 700px; } }
+  @media (max-width: 767px) {
+    .hero-container { min-height: 630px; padding-top: 64px; padding-bottom: 24px; }
+    .hero-copy { padding-bottom: 48px; }
+    .hero-description { font-size: 1rem; }
+    .hero-shade { background: linear-gradient(90deg, #051621ed, #0516218c); }
+    .hero-controls { gap: 10px; flex-wrap: wrap; }
+    .slide-selectors, .slide-navigation { gap: 6px; }
+    .playback-button { padding: 0 4px; }
+  }
+</style>

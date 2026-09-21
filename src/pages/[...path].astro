@@ -6,6 +6,7 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import Header from "../components/Header.astro";
 import Fact from "../components/Fact.astro";
 import Contact from "../components/Contact.astro";
+import IoTHub from "../components/projects/IoTHub.astro";
 import ClinicalInformationArchitecture from "../components/blogs/ClinicalInformationArchitecture.astro";
 import FirstPdcaCycle from "../components/blogs/FirstPdcaCycle.astro";
 import AfricaFourthIndustrialRevolution from "../components/blogs/AfricaFourthIndustrialRevolution.astro";
@@ -36,8 +37,15 @@ const blogComponents = {
 const blogSlug = route.startsWith("blogs/") ? route.slice("blogs/".length) as BlogSlug : undefined;
 const post = blogSlug ? blogPosts[blogSlug] : undefined;
 const BlogContent = blogSlug ? blogComponents[blogSlug] : undefined;
-if (!post && !sourceFile) throw new Error(`No page content is configured for ${route}`);
-const page = post ? {
+const isIoTHub = route === "projects/iot-hub";
+if (!post && !sourceFile && !isIoTHub) throw new Error(`No page content is configured for ${route}`);
+const page = isIoTHub ? {
+  title: "IoT Hub | Equipment Telemetry & Control - Pfitztronic",
+  description: "Connect boreholes, pumps, water tanks and industrial equipment with IoT Hub. Industrial gateways, sensors, a cloud platform and a mobile app for live telemetry, analytics and control.",
+  heading: "IoT Hub",
+  html: "",
+  structuredData: [],
+} : post ? {
   title: post.title,
   description: post.description,
   heading: post.heading,
@@ -49,8 +57,8 @@ const showContact = route === "" || route === "contact";
 ---
 
 <SiteLayout title={page.title} description={page.description} route={route} structuredData={page.structuredData}>
-  <Header heading={page.heading} route={route} />
+  {!isIoTHub && <Header heading={page.heading} route={route} />}
   {showFacts && <Fact />}
-  {BlogContent ? <BlogContent /> : <Fragment set:html={page.html} />}
+  {isIoTHub ? <IoTHub route={route} /> : BlogContent ? <BlogContent /> : <Fragment set:html={page.html} />}
   {showContact && <Contact />}
 </SiteLayout>

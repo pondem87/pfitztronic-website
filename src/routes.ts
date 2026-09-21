@@ -8,6 +8,8 @@ export const siteRoutes: SiteRoute[] = [
   { route: "", sourceFile: "index.html", indexable: true },
   { route: "about", sourceFile: "about.html", indexable: true },
   { route: "service", sourceFile: "service.html", indexable: true },
+  { route: "projects", sourceFile: "projects.html", indexable: true },
+  { route: "projects/iot-hub", indexable: true },
   { route: "services/business-architecture-design", sourceFile: "services/business-architecture-design.html", indexable: true },
   { route: "services/capability-maturity-assessment", sourceFile: "services/capability-maturity-assessment.html", indexable: true },
   { route: "services/digital-transformation-readiness", sourceFile: "services/digital-transformation-readiness.html", indexable: true },
